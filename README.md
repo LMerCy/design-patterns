@@ -1,6 +1,8 @@
 # design-patterns
 design patterns with c++
 
+c++ version of head first design patterns
+
 thanks to https://refactoringguru.cn/design-patterns
 
 ## 工厂方法模式
