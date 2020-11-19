@@ -17,3 +17,5 @@ thanks to https://refactoringguru.cn/design-patterns
 一句话概括的话就是，外面想要新建一个对象，但是不知道对象的具体类型，同时由于多态的存在，我们可以是用这些对象的共同的父类的某些方法。
 
 问题是我们为什么不能直接调用具体对象的构造函数，同时复用这些对象的某些方法呢？如：./Creational/why_need_factory.cpp
+
+update
