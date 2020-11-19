@@ -1,7 +1,7 @@
 #include <iostream>
 class QuackInterface{
 public:
-    virtual void quack() const{};
+    virtual void quack() const =0;
     virtual ~QuackInterface(){};
 };
 
@@ -27,20 +27,27 @@ public:
 };
 class FlyInterface{
 public:
-    virtual void fly() const{};
+    virtual void fly() const =0;
     virtual ~FlyInterface(){};
 };
 class FlyWithWings:public FlyInterface{
     void fly() const override{
-        std::cout << " i can fly" << std::endl;
+        std::cout << "i can fly" << std::endl;
     }
 };
 
 class FlyNoWay:public FlyInterface{
     void fly() const override{
-        std::cout << " i dont know which" << std::endl;
+        std::cout << "i cant fly" << std::endl;
     }
 };
+
+class FlyRoketPowered:public FlyInterface{
+    void fly() const override{
+        std::cout << "i can fly powered by roket" << std::endl;
+    }
+};
+
 class Duck{
 public:
     QuackInterface* quackbehavior;
@@ -56,6 +63,12 @@ public:
         flybehavior->fly();
     }
     virtual ~Duck(){};
+    void setQuack(QuackInterface *qb){
+        quackbehavior = qb;
+    };
+    void setFly(FlyInterface *fb){
+        flybehavior =  fb;
+    }
 
 };
 
@@ -69,10 +82,26 @@ public:
         std::cout << " i am MallardDuck" << std::endl;
     }
 };
+
+class ModelDuck : public Duck{
+public:
+    ModelDuck(){
+        quackbehavior = new Quack();
+        flybehavior = new FlyNoWay();
+    }
+    void display(){
+        std::cout << " i am ModelDuck" << std::endl;
+    }
+};
 int main(){
     MallardDuck mduck;
     mduck.display();
     mduck.performFly();
     mduck.performQuack();
+    ModelDuck modelduck;
+    modelduck.display();
+    modelduck.performFly();
+    modelduck.setFly(new FlyRoketPowered());
+    modelduck.performFly();
     return 0;
 }
