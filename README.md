@@ -18,4 +18,4 @@ thanks to https://refactoringguru.cn/design-patterns
 
 问题是我们为什么不能直接调用具体对象的构造函数，同时复用这些对象的某些方法呢？如：./Creational/why_need_factory.cpp
 
-update
+update-v2
