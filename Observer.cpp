@@ -74,6 +74,7 @@ private:
     SubjectInterface* subject;
 };
 int main(){
+    // test
     WeatherData wd;
     CurrentConditionsDisplayer *cur = new CurrentConditionsDisplayer(&wd);
     wd.setMeasurements(3.0,2.0,4.0);
