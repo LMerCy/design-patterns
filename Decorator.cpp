@@ -7,7 +7,7 @@ condiment--
 class Beverage{
 public:
     std::string description = "unkown beverage";
-    std::string getDescription(){
+    virtual std::string getDescription(){
         return description;
     }
     virtual float cost() = 0;
