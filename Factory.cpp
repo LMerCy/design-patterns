@@ -16,16 +16,16 @@ public:
         for(auto i:toppings)
             std::cout << " " << i <<std::endl;
     };
-    void bake(){
+    virtual void bake(){
         std::cout << "Bake for 25 minutess at 350" << std::endl;
     };
-    void cut(){
+    virtual void cut(){
         std::cout << "Cutting the pizza into diagonal slicess" << std::endl;
     };
-    void box(){
+    virtual void box(){
         std::cout << "Place pizza in official PizzaStore box" << std::endl;
     };
-    std::string getName(){
+    virtual std::string getName(){
         return name;
     };
 };
@@ -36,6 +36,9 @@ public:
         dough = "Thin Crust Dough";
         sauce = "Marinara Saucee";
         toppings.push_back("Grated Reggiano Cheese");
+    };
+    void bake(){
+        std::cout << "bake nystyle pizza" << std::endl;
     };
 };
 class ChicagoStyleCheesePizza : public Pizza{
@@ -66,12 +69,29 @@ public:
     Pizza* createPizza(std::string type){
         if(type == "cheese")
             return new NYStyleCheesePizza();
+        else{
+            std::cout << "no default cheese, create NYStyleCheesePizza" << std::endl;
+            return new NYStyleCheesePizza();
+        }
     };
 };
-
+class ChicagoPizzaStore: public PizzaStore{
+public:
+    Pizza * createPizza(std::string type){
+        if(type == "cheese")
+            return new ChicagoStyleCheesePizza();
+        else{
+            std::cout << "no default cheese, create ChicagoStyleCheesePizza" << std::endl;
+            return new ChicagoStyleCheesePizza(); 
+        }
+    }
+};
 int main(){
     PizzaStore *ps = new NYPizzaStore();
+    PizzaStore *ps2 = new ChicagoPizzaStore();
     Pizza *pz = ps->orderPizza("cheese");
+    Pizza *pz2 = ps2->orderPizza("cheese");
     std::cout << "order a " << pz->getName() << std::endl;
+    std::cout << "order a " << pz2->getName() <<  std::endl;
     return 0;
 }
