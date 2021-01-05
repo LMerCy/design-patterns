@@ -21,4 +21,8 @@ thanks to https://refactoringguru.cn/design-patterns
 
 问题是我们为什么不能直接调用具体对象的构造函数，同时复用这些对象的某些方法呢？如：./Creational/why_need_factory.cpp
 
-update-v2
+## 依赖倒置原则
+
+不能让高层组件依赖低层组件，而且，不管高层组件和低层组件，“两者”都应该依赖于抽象。（啥意思？？）
+
+在Factory代码中，PizzaStore是高层组件，而Pizza的实现是低层组件。
