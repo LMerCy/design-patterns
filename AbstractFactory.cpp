@@ -101,7 +101,6 @@ public:
     Clams* createClams() override {
         return new FrozenClams();
     };
-
 };
 class Pizza{
 public:
