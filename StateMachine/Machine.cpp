@@ -6,6 +6,7 @@ GumballMachine::GumballMachine(int numberGumballs){
         noQuaterState = new NoQuaterState(this);
         hasQuaterState = new HasQuaterState(this);
         soldState = new SoldState(this);
+        winnerState = new WinnerState(this);
         if(count > 0)
             state = noQuaterState;
         else
@@ -48,4 +49,6 @@ State* GumballMachine::getHasQuaterState(){
 State* GumballMachine::getSoldState(){
     return soldState;
 };
-
+State* GumballMachine::getWinnerState(){
+    return winnerState;
+};

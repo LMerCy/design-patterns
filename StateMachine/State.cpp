@@ -49,7 +49,7 @@ void HasQuaterState::ejectQuater(){
 };
 void HasQuaterState::turnCrank(){
     std::cout << "Turn ..." << std::endl;
-    machine->setState(machine->getSoldState());
+    machine->setState(machine->getWinnerState());
 };
 void HasQuaterState::dispense(){
     std::cout << "You should turnDrank First!" << std::endl;
@@ -91,14 +91,21 @@ void WinnerState::turnCrank(){
 };
 void WinnerState::dispense(){
     uint32_t randomnumber;
-    rng.seed(100);
+    rng.seed(time(NULL));
     std::uniform_int_distribution<uint32_t> uint_dist10(0,10); // range [0,10]
     randomnumber = uint_dist10(rng);
+    std::cout << randomnumber << std::endl;
     if(randomnumber >= 9){
+        std::cout << "congraduate!! You have got two gumballs" << std::endl;
         machine->releaseBall();
         machine->releaseBall();
     }
     else{
+        std::cout << "You have got one gumball" << std::endl;
         machine->releaseBall();
     }
+    if(machine->getCount() > 0)
+        machine->setState(machine->getNoquaterState());
+    else
+        machine->setState(machine->getSoldOutState());
 };

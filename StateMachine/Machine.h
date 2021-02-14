@@ -6,12 +6,14 @@ class SoldOutState;
 class NoQuaterState;
 class HasQuaterState;
 class SoldState;
+class WinnerState;
 class GumballMachine{
 public:
     State* soldOutState;
     State* noQuaterState;
     State* hasQuaterState;
     State* soldState;
+    State* winnerState;
     State* state;
     int count;
     GumballMachine(int numberGumballs);
@@ -25,5 +27,6 @@ public:
     State* getSoldOutState();
     State* getHasQuaterState();
     State* getSoldState();
+    State* getWinnerState();
 };
 #endif
