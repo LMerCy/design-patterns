@@ -14,12 +14,12 @@ using Fun = typename Fun_<T>::type;
 std::remove_reference<int &>::type h1=5;
 std::remove_reference_t<int &> h2 = 6;
 
-template<int a,int b>
+template<int a,int b> //depend on Add_
 struct Add_{
     constexpr static int value = a + b;
 };
 
-template<int a,int b>
+template<int a,int b> //independent function
 constexpr int Add = a + b;
 
 int main(){
